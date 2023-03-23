@@ -1,0 +1,64 @@
+html {
+  box-sizing: border-box;
+  background-color: rgb(51, 51, 83);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.tank {
+  position: absolute;
+  width: 100px;
+  height: 124px;
+  background-image: url(../img/Tank.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: left 0.3s linear, top 0.3s linear;
+}
+
+.wall-1 {
+  position: absolute;
+  top: 0;
+  left: 30%;
+  width: 83px;
+  height: 301px;
+  background-image: url(../img/wall.png);
+  background-size: cover;
+}
+
+.wall-2 {
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  width: 83px;
+  height: 301px;
+  background-image: url(../img/wall.png);
+  background-size: cover;
+}
+
+.wall-3 {
+  position: absolute;
+  top: 0;
+  left: 65%;
+  width: 83px;
+  height: 301px;
+  background-image: url(../img/wall.png);
+  background-size: cover;
+}
+
+.wall-4 {
+  position: absolute;
+  bottom: 0;
+  left: 65%;
+  width: 83px;
+  height: 301px;
+  background-image: url(../img/wall.png);
+  background-size: cover;
+}
