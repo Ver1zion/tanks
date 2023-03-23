@@ -16,25 +16,39 @@ const wall4 = document.querySelector(".wall-4");
 
 document.addEventListener("keyup", (event) => {
   if (event.key === "ArrowLeft") {
-    tank.style.transform = "rotate(270deg)";
     socket.send(`{"Move":"Left"}`);
   } else if (event.key === "ArrowRight") {
-    tank.style.transform = "rotate(90deg)";
     socket.send(`{"Move":"Right"}`);
   } else if (event.key === "ArrowUp") {
-    tank.style.transform = "rotate(0deg)";
     socket.send(`{"Move":"Up"}`);
   } else if (event.key === "ArrowDown") {
-    tank.style.transform = "rotate(180deg)";
     socket.send(`{"Move":"Down"}`);
   }
 
   socket.onmessage = (event) => {
-    let dataParsed = JSON.parse(event.data);
+    const dataParsed = JSON.parse(event.data);
     console.log(dataParsed);
     const x = dataParsed.X;
     const y = dataParsed.Y;
+    const rotate = dataParsed.R;
+    tank.style.transform = rotate + "deg";
     tank.style.left = x + "px";
-    tank.style.top = -y + "px";
+    tank.style.top = y + "px";
   };
 });
+
+const players = {
+  Players: [
+    { Id: 0, X: 20, Y: 40 },
+    { Id: 1, X: 20, Y: 40 },
+  ],
+};
+
+if (players.Players.length >= 2) {
+  const tank2 = tank.cloneNode();
+  tank2.classList.remove("tank");
+  tank2.classList.add("tank-2");
+  document.body.append(tank2);
+}
+
+socket.onmessage = (event) => {};

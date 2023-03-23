@@ -15,6 +15,20 @@ html {
 
 .tank {
   position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 100px;
+  height: 124px;
+  background-image: url(../img/Tank.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: left 0.3s linear, top 0.3s linear;
+}
+
+.tank-2 {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
   width: 100px;
   height: 124px;
   background-image: url(../img/Tank.png);
