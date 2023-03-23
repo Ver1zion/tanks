@@ -1,2 +1,2 @@
-# tanks
+# Simple game using websocket
  
