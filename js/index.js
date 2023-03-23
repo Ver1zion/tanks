@@ -1,4 +1,4 @@
-let socket = new WebSocket("ws://51.250.7.241:8080");
+let socket = new WebSocket("ws://84.252.130.243:8080");
 
 socket.onopen = () => {
   alert("Соединение установлено");
@@ -44,7 +44,7 @@ const players = {
   ],
 };
 
-if (players.Players.length >= 2) {
+if (players.Players.length === 2) {
   const tank2 = tank.cloneNode();
   tank2.classList.remove("tank");
   tank2.classList.add("tank-2");
