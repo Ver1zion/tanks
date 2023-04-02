@@ -13,29 +13,8 @@ html {
   display: none;
 }
 
-.tank {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 100px;
-  height: 124px;
-  background-image: url(../img/Tank.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  transition: left 0.3s linear, top 0.3s linear;
-}
+.bullet {
 
-.addFire {
-  display: block;
-  position: absolute;
-  top: -60px;
-  left: 30px;
-  width: 40px;
-  height: 80px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transform: rotate(90deg);
-  z-index: 10;
 }
 
 .wall-1 {
