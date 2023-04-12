@@ -36,7 +36,7 @@ document.addEventListener("keyup", (event) => {
 
 socket.onmessage = (event) => {
   const dataParsed = JSON.parse(event.data);
-  console.log(dataParsed);
+
   dataParsed.Players.forEach((player) => {
     if (!document.querySelector(`.tank${player.Id}`)) {
       const newTank = document.createElement("div");
@@ -52,12 +52,13 @@ socket.onmessage = (event) => {
       newTank.style.backgroundImage = "url(../img/Tank.png)";
       newTank.style.backgroundRepeat = "no-repeat";
       newTank.style.backgroundSize = "cover";
+      newTank.style.zIndex = "10";
       newTank.style.transition = "left 0.3s linear, top 0.3s linear";
-      newTank.style.transform = `rotate(${player.R}deg)`;
+      newTank.style.transform = `translate(-50%, -50%) rotate(${player.R}deg)`;
       document.body.prepend(newTank);
     } else {
       const tank = document.querySelector(`.tank${player.Id}`);
-      tank.style.transform = `rotate(${player.R}deg)`;
+      tank.style.transform = `translate(-50%, -50%) rotate(${player.R}deg)`;
       tank.style.left = `${player.X}px`;
       tank.style.top = `${player.Y}px`;
       if (player.Fired === true) {
@@ -72,7 +73,6 @@ socket.onmessage = (event) => {
         fire.style.backgroundSize = "cover";
         fire.style.transform = "rotate(90deg)";
         fire.style.zIndex = "10";
-        fire.classList.add(`bullet${player.Id}`);
         if (fire.classList.contains(`addFire${player.Id}`)) return;
         fire.classList.add(`addFire${player.Id}`);
         fire.style.backgroundImage =
@@ -82,6 +82,33 @@ socket.onmessage = (event) => {
           fire.classList.remove(`addFire${player.Id}`);
         }, 800);
       }
+    }
+  });
+  dataParsed.Bullets.forEach((bullet) => {
+    if (!document.querySelector(`.bullet${bullet.Id}`)) {
+      const bulletElem = document.createElement("div");
+      bulletElem.classList.add(`bullet${bullet.Id}`);
+      bulletElem.style.display = "block";
+      bulletElem.style.position = "absolute";
+      bulletElem.style.top = `${bullet.X}`;
+      bulletElem.style.left = `${bullet.Y}`;
+      bulletElem.style.width = "20px";
+      bulletElem.style.height = "40px";
+      bulletElem.style.backgroundRepeat = "no-repeat";
+      bulletElem.style.backgroundSize = "cover";
+      bulletElem.style.zIndex = "1";
+      bulletElem.style.transition = "0.2s";
+      bulletElem.style.transform = `translate(-50%, -50%) rotate(${bullet.R}deg)`;
+      bulletElem.style.backgroundImage =
+        "url(../img/bullet.png?random=" + Math.random() + ")";
+      document.body.prepend(bulletElem);
+    } else {
+      const bulletId = document.querySelector(`.bullet${bullet.Id}`);
+      bulletId.style.left = `${bullet.X}px`;
+      bulletId.style.top = `${bullet.Y}px`;
+      setInterval(() => {
+        bulletId.remove();
+      }, 10000);
     }
   });
 };

@@ -1,7 +1,9 @@
 html {
   box-sizing: border-box;
   background-color: rgb(51, 51, 83);
+  overflow: hidden;
 }
+
 
 *,
 *::before,
@@ -14,7 +16,6 @@ html {
 }
 
 .bullet {
-
 }
 
 .wall-1 {
