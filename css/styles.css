@@ -4,7 +4,6 @@ html {
   overflow: hidden;
 }
 
-
 *,
 *::before,
 *::after {
@@ -16,6 +15,14 @@ html {
 }
 
 .bullet {
+}
+
+.tankerege {
+  width: 100px;
+  height: 124px;
+  background-image: "url(../img/Tank.png)";
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .wall-1 {

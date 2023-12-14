@@ -49,7 +49,7 @@ socket.onmessage = (event) => {
       newTank.style.left = `${player.Y}px`;
       newTank.style.width = "100px";
       newTank.style.height = "124px";
-      newTank.style.backgroundImage = "url(../blob/main/img/Tank.png)";
+      newTank.style.backgroundImage = "url(../img/Tank.png)";
       newTank.style.backgroundRepeat = "no-repeat";
       newTank.style.backgroundSize = "cover";
       newTank.style.zIndex = "10";
